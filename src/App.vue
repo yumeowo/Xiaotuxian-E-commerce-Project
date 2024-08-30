@@ -3,12 +3,13 @@
 </script>
 
 <template>
-  <el-button type="primary">Primary</el-button>
+  <!-- 一级路由出口组件 -->
+  <RouterView />
 </template>
 
 <style scoped>
- button {
-  width: 200px;
-  height: 100px;
- }
+  button {
+    width: 200px;
+    height: 100px;
+  }
 </style>
