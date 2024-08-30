@@ -7,5 +7,8 @@
 </template>
 
 <style scoped>
-
+ button {
+  width: 200px;
+  height: 100px;
+ }
 </style>
