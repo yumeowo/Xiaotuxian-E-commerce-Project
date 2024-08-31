@@ -5,11 +5,13 @@
 <template>
   <!-- 一级路由出口组件 -->
   <RouterView />
+  <div class="test">
+    test scss
+  </div>
 </template>
 
-<style scoped>
-  button {
-    width: 200px;
-    height: 100px;
+<style scoped lang="scss">
+  .test {
+    color: $priceColor;
   }
 </style>
