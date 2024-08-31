@@ -44,16 +44,19 @@
   }
 
   ~li {
-    a {
-      border-left: 2px solid #666;
-    }
+    border-left: 2px solid #666;
   }
 }
 
 .app-nav li a {
-  padding: 0 15px;
+  padding: 2px 15px;
   color: #cdcdcd;
   line-height: 1;
   display: inline-block;
+}
+
+.app-nav li i {
+  padding: 5px;
+  align-items: center;
 }
 </style>
