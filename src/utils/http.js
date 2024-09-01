@@ -2,7 +2,7 @@ import axios from "axios"
 
 const httpInstance = axios.create({
   baseURL: "http://pcapi-xiaotuxian-front-devtest.itheima.net",
-  timeout: 3000,
+  timeout: 5000,
   timeoutErrorMessage: "axios请求超时"
 })
 
