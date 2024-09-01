@@ -2,10 +2,8 @@
 import { useCategoryStore } from '@/stores/category';
 import { storeToRefs } from 'pinia';
 
-  const { categoryList: list } = storeToRefs(useCategoryStore());
+const { categoryList: list } = storeToRefs(useCategoryStore());
 
-  //修改显示名称问题
-  list.value[8].children[0].name = "杂项";
 </script>
 
 <template>
