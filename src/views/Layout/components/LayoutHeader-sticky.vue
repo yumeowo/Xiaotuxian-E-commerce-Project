@@ -1,5 +1,9 @@
 <script setup>
-  import { onMounted, onUnmounted, ref } from 'vue';
+  import { useCategoryStore } from '@/stores/category';
+import { storeToRefs } from 'pinia';
+import { onMounted, onUnmounted, ref } from 'vue';
+  
+  const categoryStore = storeToRefs(useCategoryStore());
 
   let y = ref(0);
   function changeY(){

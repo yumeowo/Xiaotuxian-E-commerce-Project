@@ -1,17 +1,9 @@
 <script setup>
-import { getCategoryAPI } from "@/apis/layout";
-import { onMounted, ref } from "vue";
+import { useCategoryStore } from '@/stores/category';
+import { storeToRefs } from 'pinia';
 
-const categoryList = ref([]);
-const getCategory = async () => {
-  const res = await getCategoryAPI();
-  // console.log(res);
-  categoryList.value = res.result;
-};
+const { categoryList } = storeToRefs(useCategoryStore());
 
-onMounted(() => {
-  getCategory();
-});
 </script>
 
 <template>
