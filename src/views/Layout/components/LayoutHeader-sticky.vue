@@ -1,20 +1,18 @@
 <script setup>
-  import { useCategoryStore } from '@/stores/category';
-import { storeToRefs } from 'pinia';
-import { onMounted, onUnmounted, ref } from 'vue';
+import { inject, onMounted, onUnmounted, ref } from 'vue';
   
-  const categoryStore = storeToRefs(useCategoryStore());
+const list = inject('category-list');
 
-  let y = ref(0);
-  function changeY(){
-    y.value = document.documentElement.scrollTop;
-  }
-  onMounted(() => {
-    window.addEventListener("scroll",changeY)
-  });
-  onUnmounted(() => {
-    window.removeEventListener("scroll",changeY)
-  });
+let y = ref(0);
+function changeY(){
+  y.value = document.documentElement.scrollTop;
+}
+onMounted(() => {
+  window.addEventListener("scroll",changeY)
+});
+onUnmounted(() => {
+  window.removeEventListener("scroll",changeY)
+});
 </script>
 
 <template>
@@ -26,32 +24,10 @@ import { onMounted, onUnmounted, ref } from 'vue';
         <li class="home">
           <RouterLink to="/">首页</RouterLink>
         </li>
-        <li>
-          <RouterLink to="/">居家</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">美食</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">服饰</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">母婴</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">个护</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">严选</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">数码</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">运动</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">杂项</RouterLink>
+        <li v-for="cat in list" :key="cat.id" >
+          <router-link :to="`/category/${cat.id}`">
+            {{ cat.name }}
+          </router-link>
         </li>
       </ul>
 
