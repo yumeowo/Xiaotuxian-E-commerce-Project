@@ -4,7 +4,7 @@ import { onMounted, ref } from 'vue';
 
 const bannerList = ref([]);
 const getBanner = async ()=>{
-  const res = await getBannerAPI();
+  const res = await getBannerAPI({distributionSite: '2'});
   bannerList.value = res.result;
 }
 onMounted(() => getBanner());
@@ -28,10 +28,7 @@ onMounted(() => getBanner());
 .home-banner {
   width: 1240px;
   height: 500px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 98;
+  margin: 0 auto;
 
   img {
     width: 100%;

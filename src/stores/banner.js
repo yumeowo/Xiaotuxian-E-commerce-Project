@@ -4,8 +4,8 @@ import { ref } from "vue";
 
 export const useBannerStore = defineStore("banner",()=>{
   const bannerList = ref([]);
-  const getBanner = async ()=>{
-    const res = await getBannerAPI();
+  const getBanner = async (params = {distributionSite: '1'})=>{
+    const res = await getBannerAPI(params.distributionSite);
     bannerList.value = res.result;
   }
 

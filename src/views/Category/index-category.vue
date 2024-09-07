@@ -1,4 +1,5 @@
 <script setup>
+import CategoryBanner from './components/CategoryBanner.vue';
 import CategoryBreadContainer from './components/CategoryBreadContainer.vue';
 </script>
 
@@ -6,6 +7,7 @@ import CategoryBreadContainer from './components/CategoryBreadContainer.vue';
   <div class="top-category">
     <div class="container m-top-20">
       <CategoryBreadContainer />
+      <CategoryBanner />
     </div>
   </div>
 </template>
