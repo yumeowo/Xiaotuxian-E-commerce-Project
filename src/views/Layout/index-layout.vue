@@ -21,6 +21,7 @@ provide('category-list',categoryList);
   <LayoutHeaderSticky />
   <LayoutNav />
   <LayoutHeader />
+  <!-- 二级路由出口 -->
   <RouterView />
   <LayoutFooter />
 </template>

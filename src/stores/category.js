@@ -10,8 +10,8 @@ export const useCategoryStore = defineStore("category",()=>{
     categoryList.value = res.result;
   };
   const categoryData = ref([]);
-  const getCurrentCategory = async (route) => {
-    const res = await getCategoryById(route.params.id);
+  const getCurrentCategory = async (id) => {
+    const res = await getCategoryById(id);
     categoryData.value = res.result;
   }
   return {

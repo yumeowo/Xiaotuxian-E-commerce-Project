@@ -8,10 +8,10 @@ const route = useRoute();
 const categoryStore = useCategoryStore();
 const { categoryData } = storeToRefs(categoryStore);
 onMounted(()=>{
-  categoryStore.getCurrentCategory(route);
+  categoryStore.getCurrentCategory(route.params.id);
 })
 watch(()=>route.params.id,()=>{
-  categoryStore.getCurrentCategory(route);
+  categoryStore.getCurrentCategory(route.params.id);
 })
 </script>
 
