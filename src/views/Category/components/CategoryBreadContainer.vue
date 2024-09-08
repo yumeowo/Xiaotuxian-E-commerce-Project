@@ -1,17 +1,18 @@
 <script setup>
-
-import { getCategoryById } from '@/apis/getCategoryById';
-import { onMounted, ref, watch } from 'vue';
+import { useCategoryStore } from '@/stores/category';
+import { storeToRefs } from 'pinia';
+import { onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
-const categoryData = ref({});
 const route = useRoute();
-const getCategory = async () => {
-  const res = await getCategoryById(route.params.id);
-  categoryData.value = res.result;
-}
-onMounted(getCategory)
-watch(()=>route.params.id,getCategory)
+const categoryStore = useCategoryStore();
+const { categoryData } = storeToRefs(categoryStore);
+onMounted(()=>{
+  categoryStore.getCurrentCategory(route);
+})
+watch(()=>route.params.id,()=>{
+  categoryStore.getCurrentCategory(route);
+})
 </script>
 
 <template>

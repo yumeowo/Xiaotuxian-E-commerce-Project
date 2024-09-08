@@ -12,10 +12,10 @@ const list = inject('category-list');
       </h1>
       <ul class="app-header-nav">        
         <li class="home">
-          <RouterLink to="/">首页</RouterLink>
+          <RouterLink to="/" exact-active-class="active">首页</RouterLink>
         </li>
         <li v-for="cat in list" :key="cat.id">
-          <router-link :to="`/category/${cat.id}`">
+          <router-link :to="`/category/${cat.id}`" active-class="active">
             {{ cat.name }}
           </router-link>
         </li>
