@@ -11,7 +11,7 @@
 
 import httpInstance from "@/utils/http"
 
-export const getSubCategoryAPI = (data)=>{
+export const getSubCategoryAPI = (data: API.SubCategoryParams): Promise<API.Response<API.SubCategoryResult>> => {
   return httpInstance({
     url: '/category/goods/temporary',
     method: 'POST',

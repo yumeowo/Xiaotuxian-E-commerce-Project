@@ -1,4 +1,4 @@
-import httpInstance from "@/utils/http"
+import httpInstance from "@/utils/http.js"
 
 export const getGoodsAPI = ()=>{
   return httpInstance({

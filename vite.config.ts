@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
@@ -14,16 +13,18 @@ export default defineConfig({
     vue(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
+      dts: 'src/auto-imports.d.ts', // 生成类型声明文件
     }),
     Components({
       resolvers: [
         ElementPlusResolver({ importStyle: "sass" })
       ],
+      dts: 'src/components.d.ts', // 生成组件类型声明文件
     })
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('src', import.meta.url))
     }
   },
   css: {

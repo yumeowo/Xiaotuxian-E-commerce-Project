@@ -1,21 +1,32 @@
-<script setup>
-import { getSubCategoryAPI } from '@/apis/getSubCategory';
+<script lang="ts" setup>
+import { getSubCategoryAPI } from '@/apis/getSubCategory.ts';
 import GoodsItem from '@/views/Home/components/GoodsItem.vue';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const goodsList = ref([]);
-const httpData = ref({
-  categoryId: route.params.id,
+const goodsList = ref<API.SubCategoryResult['items']>([]);
+const httpData = ref<API.SubCategoryParams>({
+  categoryId: route.params.id[0],
   page: 1,
   pageSize: 20,
   sortField: 'publishTime'
 });
-const getGoods = async (data)=>{
+const getGoods = async (data: API.SubCategoryParams)=>{
   const res = await getSubCategoryAPI(data);
-  goodsList.value = res.result.items;
+  goodsList.value = [
+      ...goodsList.value,
+      ...res.result.items
+  ];
+  if(res.result.items.length < 20) {
+    isGetGoodsDisabled.value = true;
+  }
 };
+let isGetGoodsDisabled = ref(false);
+const addGoods = async ()=>{
+  httpData.value.page++;
+  await getGoods(httpData.value);
+}
 onMounted(() => getGoods(httpData.value));
 </script>
 
@@ -26,14 +37,15 @@ onMounted(() => getGoods(httpData.value));
       <el-tab-pane label="最高人气" name="orderNum"></el-tab-pane>
       <el-tab-pane label="评论最多" name="evaluateNum"></el-tab-pane>
     </el-tabs>
-    <div class="body">
+    <div
+        v-infinite-scroll="addGoods"
+        :infinite-scroll-disabled="isGetGoodsDisabled"
+        class="body">
         <!-- 商品列表-->
         <GoodsItem v-for="good in goodsList" :good="good" :key="good.id" />
     </div>
   </div>
 </template>
-
-
 
 <style lang="scss" scoped>
 .sub-container {
